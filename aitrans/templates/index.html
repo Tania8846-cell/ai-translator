@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Language Translator</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        textarea, select, button { width: 100%; margin: 10px 0; padding: 10px; font-size: 16px; }
+        button { background: #007BFF; color: white; border: none; border-radius: 8px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 20px; padding: 15px; background: #e8f0fe; border-radius: 8px; }
+        .roman { margin-top: 10px; font-style: italic; color: #555; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>🌍 Language Translator</h2>
+    <form method="POST">
+        <!-- Source Language -->
+        <label for="source_language">From language:</label>
+        <select name="source_language" required>
+            <option value="auto" {% if source_lang=="auto" %}selected{% endif %}>Auto Detect</option>
+            <option value="en" {% if source_lang=="en" %}selected{% endif %}>English</option>
+            <option value="hi" {% if source_lang=="hi" %}selected{% endif %}>Hindi</option>
+            <option value="te" {% if source_lang=="te" %}selected{% endif %}>Telugu</option>
+            <option value="ml" {% if source_lang=="ml" %}selected{% endif %}>Malayalam</option>
+            <option value="ta" {% if source_lang=="ta" %}selected{% endif %}>Tamil</option>
+            <option value="kn" {% if source_lang=="kn" %}selected{% endif %}>Kannada</option>
+            <option value="bn" {% if source_lang=="bn" %}selected{% endif %}>Bengali</option>
+            <option value="gu" {% if source_lang=="gu" %}selected{% endif %}>Gujarati</option>
+            <option value="fr" {% if source_lang=="fr" %}selected{% endif %}>French</option>
+            <option value="es" {% if source_lang=="es" %}selected{% endif %}>Spanish</option>
+            <option value="de" {% if source_lang=="de" %}selected{% endif %}>German</option>
+            <option value="ar" {% if source_lang=="ar" %}selected{% endif %}>Arabic</option>
+        </select>
+
+        <!-- Text Input -->
+        <label for="text">Enter text:</label>
+        <textarea name="text" rows="4" required>{{ text_input }}</textarea>
+
+        <!-- Target Language -->
+        <label for="language">To language:</label>
+        <select name="language" required>
+            <option value="hi" {% if target_lang=="hi" %}selected{% endif %}>Hindi</option>
+            <option value="te" {% if target_lang=="te" %}selected{% endif %}>Telugu</option>
+            <option value="ml" {% if target_lang=="ml" %}selected{% endif %}>Malayalam</option>
+            <option value="ta" {% if target_lang=="ta" %}selected{% endif %}>Tamil</option>
+            <option value="kn" {% if target_lang=="kn" %}selected{% endif %}>Kannada</option>
+            <option value="bn" {% if target_lang=="bn" %}selected{% endif %}>Bengali</option>
+            <option value="gu" {% if target_lang=="gu" %}selected{% endif %}>Gujarati</option>
+            <option value="fr" {% if target_lang=="fr" %}selected{% endif %}>French</option>
+            <option value="es" {% if target_lang=="es" %}selected{% endif %}>Spanish</option>
+            <option value="de" {% if target_lang=="de" %}selected{% endif %}>German</option>
+            <option value="ar" {% if target_lang=="ar" %}selected{% endif %}>Arabic</option>
+            <option value="en" {% if target_lang=="en" %}selected{% endif %}>English</option>
+        </select>
+
+        <button type="submit">Translate</button>
+    </form>
+
+    <!-- Display Translation -->
+    {% if translation %}
+    <div class="result">
+        <h3>Translated Text:</h3>
+        <p>{{ translation }}</p>
+        {% if roman_text %}
+        <div class="roman">{{ roman_text }}</div>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
