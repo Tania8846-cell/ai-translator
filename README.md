@@ -43,7 +43,7 @@ ai-translator/ │ ├── server.py ├── requirements.txt ├── temp
 
 ### 1️⃣ Clone the Repository
 
-https://github.com/Taniakhatoon/ai-translator/edit/main/README.md
+https://github.com/Taniakhatoon/ai-translator
 
 ### 2️⃣ Navigate to Project Folder
 
